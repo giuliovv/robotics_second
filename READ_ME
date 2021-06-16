@@ -1,0 +1,5 @@
+list of packages reqired:
+- navigation;
+- openslam_gmappin;
+- slam_gmapping;
+- kobuki_description (?);
