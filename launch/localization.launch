@@ -92,7 +92,8 @@
         <param name="laser_model_type" value="likelihood_field_prob"/>
         <!-- https://answers.ros.org/question/334068/dynamic-obstacles-inflation-layer-configuration/ -->
         <param name="laser_likelihood_max_dist" value="2.0"/>
-        <param name="update_min_d" value="0.25"/>
+        <!-- https://answers.ros.org/question/53503/navigation-stack-parameter-tuning-for-high-accurate-localization/ -->
+        <param name="update_min_d" value="0.15"/>
         <param name="update_min_a" value="0.2"/>
         <param name="odom_frame_id" value="$(arg odom_frame_id)"/>
         <param name="base_frame_id" value="$(arg base_frame_id)"/>
