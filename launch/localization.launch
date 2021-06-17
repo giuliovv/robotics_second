@@ -35,24 +35,10 @@
         <param name="imu0" value="/mavros/imu/data_raw" />  
         <param name="imu0_differential" value="false"/>
         <rosparam param="imu0_config">[false, false, false, 
-                                        false, false, true,
+                                        false, false, false,
                                         true, true, false, 
-                                        false, false, true,
-                                        false, false, false]</rosparam>
-        <param name="imu1" value="/camera/accel/sample" />  
-        <param name="imu1_differential" value="false"/>
-        <rosparam param="imu1_config">[false, false, false, 
-                                        false, false, true,
-                                        true, true, false, 
-                                        false, false, true,
-                                        false, false, false]</rosparam>
-        <param name="imu2" value="/camera/gyro/sample" />  
-        <param name="imu2_differential" value="false"/>
-        <rosparam param="imu2_config">[false, false, false, 
-                                        false, false, true,
-                                        true, true, false, 
-                                        false, false, true,
-                                        false, false, false]</rosparam>
+                                        false, false, false,
+                                        true, true, true]</rosparam>
         <param name="odom0" value="/odom" />  
         <param name="odom0_differential" value="false"/>
         <rosparam param="odom0_config">[false, false, false, 
