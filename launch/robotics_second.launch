@@ -1,7 +1,8 @@
 <launch>
 
     <!-- <node pkg="robotics_first" name="robot_tf" type="tf_publisher" output="screen"/> -->
-    <node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 1.57 world odom " />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 0 world odom " />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="laser" args="0 0 0 1.57 0 0 base_link laser " />
 
     <arg name="bag_file_name" value="calib"/>
     <node pkg="rosbag" type="play" name="player" args="-l --clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
