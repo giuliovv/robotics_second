@@ -4,6 +4,6 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 0 1.57 world odom " />
 
     <arg name="bag_file_name" value="calib"/>
-    <node pkg="rosbag" type="play" name="player" args="--clock $(find robotics_first)/bags/$(arg bag_file_name).bag"/>
+    <node pkg="rosbag" type="play" name="player" args="--clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
 
 </launch>
