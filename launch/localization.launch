@@ -34,6 +34,9 @@
         <!-- <param name="print_diagnostics" value="true" /> -->
         <param name="imu0" value="/mavros/imu/data_raw" />  
         <param name="imu0_differential" value="false"/>
+        <param name="imu0_relative" value="false"/>
+        <param name="imu0_remove_gravitational_acceleration" value="true"/>
+        <param name="imu0_queue_size" value="1"/>
         <rosparam param="imu0_config">[false, false, false, 
                                         false, false, true,
                                         false, false, false, 
@@ -41,6 +44,8 @@
                                         true, true, true]</rosparam>
         <param name="odom0" value="/odom" />  
         <param name="odom0_differential" value="false"/>
+        <param name="odom0_relative" value="true"/>
+        <param name="odom0_queue_size" value="1"/>
         <rosparam param="odom0_config">[true, true, true, 
                                         false, false, false,
                                         true, false, false, 
@@ -48,11 +53,15 @@
                                         false, false, false]</rosparam>
         <param name="odom1" value="/camera/odom/sample" />  
         <param name="odom1_differential" value="false"/>
+        <param name="odom1_relative" value="true"/>
+        <param name="odom1_queue_size" value="1"/>
         <rosparam param="odom1_config">[true, true, true, 
                                         false, false, false,
                                         true, false, false, 
                                         false, false, true,
                                         false, false, false]</rosparam>
+        <rosparam param="process_noise_covariance">[0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.05, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.03, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.03, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.06, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.025, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.04, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.02, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.01, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.015]
+        </rosparam>
     </node>
 
     <arg name="use_map_topic" default="true"/>
