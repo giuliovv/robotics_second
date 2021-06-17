@@ -36,7 +36,7 @@ private:
 
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "tf_odom");
+  ros::init(argc, argv, "tf_laser");
   tf_sub_pub my_tf_sub_bub;
   ros::spin();
   return 0;
