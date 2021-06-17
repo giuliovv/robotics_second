@@ -11,7 +11,6 @@
     
     <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping">
         <param name="scan" value="scan"/>
-        <!-- <param name="base_link" value="base_footprint"/> -->
         <param name="base_frame" value="base_link"/>
     </node>
 </launch>
