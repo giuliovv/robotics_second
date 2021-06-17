@@ -6,6 +6,7 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 0 world odom " />
     <node pkg="tf2_ros" type="static_transform_publisher" name="laser" args="0 0 0 1.57 0 0 base_link laser " />
     <node pkg="tf2_ros" type="static_transform_publisher" name="camera_accel" args="0 0 0 0 0 0 base_link camera_accel_optical_frame " />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="camera_gyro" args="0 0 0 0 0 0 base_link camera_gyro_optical_frame " />
 
     <arg name="bag_file_name" value="2"/>
     <node pkg="rosbag" type="play" name="player" args="-l --clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
@@ -21,7 +22,7 @@
         <param name="gain_mag" value="0.01"/>
     </node>
 
-    <node pkg="robot_localization" type="ekf_localization_node" name="robot_localization_ekf_node_odom" clear_params="true">
+    <node pkg="robot_localization" type="ukf_localization_node" name="robot_localization_ukf_node_odom" clear_params="true">
         <param name="frequency" value="10." />  
         <param name="sensor_timeout" value="0.2" />  
         <param name="two_d_mode" value="true" />
@@ -30,7 +31,7 @@
         <param name="odom_frame" value="odom" />
         <param name="base_link_frame" value="base_link" />
         <param name="world_frame" value="odom" />
-        <param name="print_diagnostics" value="true" />
+        <!-- <param name="print_diagnostics" value="true" /> -->
         <param name="imu0" value="/mavros/imu/data_raw" />  
         <param name="imu0_differential" value="false"/>
         <rosparam param="imu0_config">[false, false, false, 
@@ -45,9 +46,23 @@
                                         true, true, false, 
                                         false, false, true,
                                         false, false, false]</rosparam>
+        <param name="imu2" value="/camera/gyro/sample" />  
+        <param name="imu2_differential" value="false"/>
+        <rosparam param="imu2_config">[false, false, false, 
+                                        false, false, true,
+                                        true, true, false, 
+                                        false, false, true,
+                                        false, false, false]</rosparam>
         <param name="odom0" value="/odom" />  
         <param name="odom0_differential" value="false"/>
         <rosparam param="odom0_config">[false, false, false, 
+                                        false, false, false,
+                                        true, true, true, 
+                                        false, false, true,
+                                        false, false, false]</rosparam>
+        <param name="odom1" value="/camera/odom/sample" />  
+        <param name="odom1_differential" value="false"/>
+        <rosparam param="odom1_config">[false, false, false, 
                                         false, false, false,
                                         true, true, true, 
                                         false, false, true,
@@ -93,8 +108,8 @@
         <!-- https://answers.ros.org/question/334068/dynamic-obstacles-inflation-layer-configuration/ -->
         <param name="laser_likelihood_max_dist" value="2.0"/>
         <!-- https://answers.ros.org/question/53503/navigation-stack-parameter-tuning-for-high-accurate-localization/ -->
-        <param name="update_min_d" value="0.15"/>
-        <param name="update_min_a" value="0.2"/>
+        <param name="update_min_d" value="0.1"/>
+        <param name="update_min_a" value="0.1"/>
         <param name="odom_frame_id" value="$(arg odom_frame_id)"/>
         <param name="base_frame_id" value="$(arg base_frame_id)"/>
         <param name="global_frame_id" value="$(arg global_frame_id)"/>
