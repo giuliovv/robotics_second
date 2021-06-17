@@ -243,8 +243,8 @@ include_directories(
 # add_executable(agile_tf src/agile_tf.cpp)
 # target_link_libraries(agile_tf ${catkin_LIBRARIES})
 
-add_executable(tf_second src/tf_publisher.cpp)
-target_link_libraries(tf_second ${catkin_LIBRARIES})
+# add_executable(tf_second src/tf_publisher.cpp)
+# target_link_libraries(tf_second ${catkin_LIBRARIES})
 
-add_executable(tf_laser src/tf_laser.cpp)
-target_link_libraries(tf_laser ${catkin_LIBRARIES})
+# add_executable(tf_laser src/tf_laser.cpp)
+# target_link_libraries(tf_laser ${catkin_LIBRARIES})
