@@ -35,6 +35,13 @@
                                         true, true, false, 
                                         false, false, true,
                                         false, false, false]</rosparam>
+        <param name="odom0" value="/odom" />  
+        <param name="odom0_differential" value="false"/>
+        <rosparam param="odom0_config">[false, false, false, 
+                                        false, false, false,
+                                        true, true, true, 
+                                        false, false, true,
+                                        false, false, false]</rosparam>
     </node>
 
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
