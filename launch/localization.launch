@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <launch>
 
+    <param name="/use_sim_time" value="true" />
+
     <node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 0 world odom " />
     <node pkg="tf2_ros" type="static_transform_publisher" name="laser" args="0 0 0 1.57 0 0 base_link laser " />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="camera_accel" args="0 0 0 0 0 0 base_link camera_accel_optical_frame " />
 
     <arg name="bag_file_name" value="2"/>
     <node pkg="rosbag" type="play" name="player" args="-l --clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
@@ -31,6 +34,13 @@
         <param name="imu0" value="/mavros/imu/data_raw" />  
         <param name="imu0_differential" value="false"/>
         <rosparam param="imu0_config">[false, false, false, 
+                                        false, false, true,
+                                        true, true, false, 
+                                        false, false, true,
+                                        false, false, false]</rosparam>
+        <param name="imu1" value="/camera/accel/sample" />  
+        <param name="imu1_differential" value="false"/>
+        <rosparam param="imu1_config">[false, false, false, 
                                         false, false, true,
                                         true, true, false, 
                                         false, false, true,
