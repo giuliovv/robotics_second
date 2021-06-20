@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <launch>
     <param name="/use_sim_time" value="true" />
+
+    <!-- <remap from="/scout/odom" to="/odom"/> -->
     
     <node pkg="tf2_ros" type="static_transform_publisher" name="world" args="0 0 0 0 0 0 world odom " />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="scout" args="0 0 0 0 0 0 odom /scout/odom " />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base" args="0 0 0 0 0 0 /scout/base_link base_link" />
     <node pkg="tf2_ros" type="static_transform_publisher" name="laser" args="0 0 0 1.57 0 0 base_link laser " />
     
-    <arg name="bag_file_name" value="1"/>
+    <arg name="bag_file_name" value="1_remapped"/>
     <node pkg="rosbag" type="play" name="player" args="-l --clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
 
     <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find robotics_second)/rviz/map_config.rviz"/>
@@ -13,5 +17,6 @@
     <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping">
         <param name="scan" value="scan"/>
         <param name="base_frame" value="base_link"/>
+        <!-- <param name="odom_frame" value="/scout/odom"/> -->
     </node>
 </launch>
