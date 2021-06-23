@@ -8,19 +8,11 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="scout" args="0 0 0 0 0 0 odom /scout/odom " />
     <node pkg="tf2_ros" type="static_transform_publisher" name="base" args="0 0 0 0 0 0 /scout/base_link base_link" />
 
-    <arg name="bag_file_name" value="2_remapped"/>
+    <arg name="bag_file_name" value="3_remapped"/>
     <node pkg="rosbag" type="play" name="player" args="-l --clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
 
     <arg name="map_file" default="$(find robotics_second)/maps/map.yaml"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-
-    <node pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_gain_node" output="screen">
-        <param name="do_bias_estimation" value="true"/>
-        <param name="do_adaptive_gain" value="true"/>
-        <param name="use_mag" value="false"/>
-        <param name="gain_acc" value="0.01"/>
-        <param name="gain_mag" value="0.01"/>
-    </node>
 
     <node pkg="robot_localization" type="ukf_localization_node" name="robot_localization_ukf_node_odom" clear_params="true">
         <param name="frequency" value="10." />  

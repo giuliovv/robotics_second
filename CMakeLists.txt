@@ -8,17 +8,6 @@ project(robotics_second)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  message_generation
-  nav_msgs
-  std_msgs
-  message_filters
-  geometry_msgs
-  tf2
-  tf2_ros
-  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
@@ -76,12 +65,9 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
+# generate_messages(
 #   DEPENDENCIES
-  DEPENDENCIES
-  std_msgs
-  nav_msgs
-)
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -98,11 +84,11 @@ generate_messages(
 ##     and list every .cfg file to be processed
 
 ## Generate dynamic reconfigure parameters in the 'cfg' folder
-generate_dynamic_reconfigure_options(
+# generate_dynamic_reconfigure_options(
   # cfg/parameter.cfg
 #   cfg/DynReconf1.cfg
 #   cfg/DynReconf2.cfg
-)
+# )
 
 ###################################
 ## catkin specific configuration ##
@@ -113,20 +99,12 @@ generate_dynamic_reconfigure_options(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-catkin_package(
+# catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES robotics_first
 #  CATKIN_DEPENDS other_catkin_pkg
-  CATKIN_DEPENDS
-  roscpp
-  rospy
-  std_msgs
-  message_runtime
-  nav_msgs
-  message_filters
-  geometry_msgs
 #  DEPENDS system_lib
-)
+# )
 
 ###########
 ## Build ##
