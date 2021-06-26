@@ -7,9 +7,10 @@
     <node pkg="tf2_ros" type="static_transform_publisher" name="laser" args="0 0 0 1.57 0 0 base_link laser " />
     <node pkg="tf2_ros" type="static_transform_publisher" name="scout" args="0 0 0 0 0 0 odom /scout/odom " />
     <node pkg="tf2_ros" type="static_transform_publisher" name="base" args="0 0 0 0 0 0 /scout/base_link base_link" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="camera" args="0 0 0 0 0 0 odom camera_odom_frame " />
 
-    <arg name="bag_file_name" value="3_remapped"/>
-    <node pkg="rosbag" type="play" name="player" args="-l --clock $(find robotics_second)/bags/$(arg bag_file_name).bag"/>
+    <!-- <arg name="bag_file_name" value="3_remapped"/> -->
+    <!-- <node pkg="rosbag" type="play" name="player" args="$(find robotics_second)/bags/$(arg bag_file_name).bag"/> -->
 
     <arg name="map_file" default="$(find robotics_second)/maps/map.yaml"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
@@ -76,7 +77,6 @@
         <param name="laser_max_range" value="20.0"/>
         <param name="min_particles" value="500"/>
         <param name="max_particles" value="2000"/>
-        <!-- TODO -->
         <param name="kld_err" value="0.05"/>
         <param name="kld_z" value="0.99"/>
         <param name="odom_alpha1" value="0.2"/>
